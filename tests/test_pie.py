@@ -1,8 +1,13 @@
-import hashlib, pathlib, pytest
+import hashlib
+import pathlib
+
+import pytest
+
 from pie.data import DS, load
 from pie.detectors import Ensemble, HeuristicDetector, NaiveBayesDetector, feats
 from pie.indirect import ATTACKS, BENIGN, cases, decode_layers, naive_agent, spotlight
 from pie.metrics import confusion, report, wilson
+
 
 @pytest.fixture(scope="module")
 def nb():
