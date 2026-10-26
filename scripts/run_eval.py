@@ -1,12 +1,16 @@
 """MEASURED: detectors on the public deepset/prompt-injections test split (116 rows; NB trained on train split only).
 Indirect suite is self-written (24 cases, SYNTHETIC); attack success uses a SIMULATED worst-case agent."""
-import json, pathlib, sys
+import json
+import pathlib
+import sys
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from pie.data import load  # noqa: E402
-from pie.detectors import Ensemble, HeuristicDetector, NaiveBayesDetector  # noqa: E402
-from pie.indirect import cases, decode_layers, naive_agent  # noqa: E402
-from pie.metrics import report  # noqa: E402
+from pie.data import load
+from pie.detectors import Ensemble, HeuristicDetector, NaiveBayesDetector
+from pie.indirect import cases, decode_layers, naive_agent
+from pie.metrics import report
+
 
 def main():
     train, test = load("train"), load("test")

@@ -4,8 +4,10 @@
 - NaiveBayesDetector: multinomial NB over word unigrams/bigrams + char 4-grams, trained on the public train split only.
 - Ensemble: flags if either flags (recall-oriented) or both flag (precision-oriented).
 Production stand-ins: Azure AI Content Safety Prompt Shields, Llama Guard / Prompt Guard, NeMo Guardrails."""
-import math, re
+import math
+import re
 from collections import Counter
+from itertools import pairwise
 
 PATTERNS = [
     r"\bignore (all |any )?(the )?(previous|prior|above|earlier)\b", r"\bforget (all |everything|about)",
@@ -14,7 +16,7 @@ PATTERNS = [
     r"\breveal\b.*\b(prompt|instructions|password|secret)", r"\boverride\b", r"\bnow (you|answer|focus|say)\b",
     r"\bvergiss\b", r"\bignorier", r"\bneue aufgabe", r"\bdu bist (jetzt|nun)\b", r"\bvorherigen\b", r"\bab jetzt\b",
 ]
-RX = [re.compile(p, re.I) for p in PATTERNS]
+RX = [re.compile(p, re.IGNORECASE) for p in PATTERNS]
 
 class HeuristicDetector:
     name = "heuristic"
@@ -24,7 +26,7 @@ class HeuristicDetector:
 def feats(text: str) -> list[str]:
     t = text.lower()
     w = re.findall(r"\w+", t)
-    out = w + [a + "_" + b for a, b in zip(w, w[1:])]
+    out = w + [a + "_" + b for a, b in pairwise(w)]
     s = re.sub(r"\s+", " ", t)
     out += ["c:" + s[i:i + 4] for i in range(max(0, len(s) - 3))]
     return out

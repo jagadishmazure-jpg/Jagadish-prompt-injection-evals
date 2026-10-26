@@ -1,4 +1,6 @@
-import json, pathlib
+import json
+import pathlib
+
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 DS = ROOT / "data" / "third_party" / "deepset-prompt-injections"
 
