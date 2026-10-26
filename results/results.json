@@ -1,0 +1,188 @@
+{
+  "label": "MEASURED on public test split; indirect suite SYNTHETIC; agent SIMULATED",
+  "sample": "deepset/prompt-injections test n=116 (60 injections); indirect n=24",
+  "metrics": {
+    "Direct / heuristic: precision, recall (95% CI), FPR": "1.0, 0.25 [0.158, 0.372], 0.0",
+    "Direct / naive_bayes: precision, recall (95% CI), FPR": "0.891, 0.817 [0.701, 0.894], 0.107",
+    "Direct / ensemble_any: precision, recall (95% CI), FPR": "0.891, 0.817 [0.701, 0.894], 0.107",
+    "Direct / ensemble_all: precision, recall (95% CI), FPR": "1.0, 0.25 [0.158, 0.372], 0.0",
+    "Indirect (synthetic) / heuristic (raw): recall, FPR": "0.917, 0.417",
+    "Indirect (synthetic) / heuristic (decoded): recall, FPR": "1.0, 0.417",
+    "Indirect (synthetic) / ensemble_any (decoded): recall, FPR": "1.0, 0.75",
+    "Simulated agent attack success: no defence": "12/12",
+    "Simulated agent attack success: detector gate (ensemble_any, decoded)": "0/12",
+    "Simulated agent attack success: tool allow-list only": "0/12"
+  },
+  "direct": {
+    "heuristic": {
+      "tp": 15,
+      "fp": 0,
+      "fn": 45,
+      "tn": 56,
+      "precision": 1.0,
+      "recall": 0.25,
+      "f1": 0.4,
+      "fpr": 0.0,
+      "recall_ci95": [
+        0.158,
+        0.372
+      ]
+    },
+    "naive_bayes": {
+      "tp": 49,
+      "fp": 6,
+      "fn": 11,
+      "tn": 50,
+      "precision": 0.891,
+      "recall": 0.817,
+      "f1": 0.852,
+      "fpr": 0.107,
+      "recall_ci95": [
+        0.701,
+        0.894
+      ]
+    },
+    "ensemble_any": {
+      "tp": 49,
+      "fp": 6,
+      "fn": 11,
+      "tn": 50,
+      "precision": 0.891,
+      "recall": 0.817,
+      "f1": 0.852,
+      "fpr": 0.107,
+      "recall_ci95": [
+        0.701,
+        0.894
+      ]
+    },
+    "ensemble_all": {
+      "tp": 15,
+      "fp": 0,
+      "fn": 45,
+      "tn": 56,
+      "precision": 1.0,
+      "recall": 0.25,
+      "f1": 0.4,
+      "fpr": 0.0,
+      "recall_ci95": [
+        0.158,
+        0.372
+      ]
+    }
+  },
+  "indirect": {
+    "heuristic (raw)": {
+      "tp": 11,
+      "fp": 5,
+      "fn": 1,
+      "tn": 7,
+      "precision": 0.688,
+      "recall": 0.917,
+      "f1": 0.786,
+      "fpr": 0.417,
+      "recall_ci95": [
+        0.646,
+        0.985
+      ]
+    },
+    "heuristic (decoded)": {
+      "tp": 12,
+      "fp": 5,
+      "fn": 0,
+      "tn": 7,
+      "precision": 0.706,
+      "recall": 1.0,
+      "f1": 0.828,
+      "fpr": 0.417,
+      "recall_ci95": [
+        0.757,
+        1.0
+      ]
+    },
+    "naive_bayes (raw)": {
+      "tp": 12,
+      "fp": 9,
+      "fn": 0,
+      "tn": 3,
+      "precision": 0.571,
+      "recall": 1.0,
+      "f1": 0.727,
+      "fpr": 0.75,
+      "recall_ci95": [
+        0.757,
+        1.0
+      ]
+    },
+    "naive_bayes (decoded)": {
+      "tp": 12,
+      "fp": 9,
+      "fn": 0,
+      "tn": 3,
+      "precision": 0.571,
+      "recall": 1.0,
+      "f1": 0.727,
+      "fpr": 0.75,
+      "recall_ci95": [
+        0.757,
+        1.0
+      ]
+    },
+    "ensemble_any (raw)": {
+      "tp": 12,
+      "fp": 9,
+      "fn": 0,
+      "tn": 3,
+      "precision": 0.571,
+      "recall": 1.0,
+      "f1": 0.727,
+      "fpr": 0.75,
+      "recall_ci95": [
+        0.757,
+        1.0
+      ]
+    },
+    "ensemble_any (decoded)": {
+      "tp": 12,
+      "fp": 9,
+      "fn": 0,
+      "tn": 3,
+      "precision": 0.571,
+      "recall": 1.0,
+      "f1": 0.727,
+      "fpr": 0.75,
+      "recall_ci95": [
+        0.757,
+        1.0
+      ]
+    },
+    "ensemble_all (raw)": {
+      "tp": 11,
+      "fp": 5,
+      "fn": 1,
+      "tn": 7,
+      "precision": 0.688,
+      "recall": 0.917,
+      "f1": 0.786,
+      "fpr": 0.417,
+      "recall_ci95": [
+        0.646,
+        0.985
+      ]
+    },
+    "ensemble_all (decoded)": {
+      "tp": 12,
+      "fp": 5,
+      "fn": 0,
+      "tn": 7,
+      "precision": 0.706,
+      "recall": 1.0,
+      "f1": 0.828,
+      "fpr": 0.417,
+      "recall_ci95": [
+        0.757,
+        1.0
+      ]
+    }
+  }
+}
